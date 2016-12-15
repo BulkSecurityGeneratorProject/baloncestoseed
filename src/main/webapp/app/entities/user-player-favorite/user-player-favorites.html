@@ -1,0 +1,70 @@
+<div>
+    <h2 data-translate="baloncestoseedApp.userPlayerFavorite.home.title">User Player Favorites</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="user-player-favorite.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="baloncestoseedApp.userPlayerFavorite.home.createLabel">
+                        Create new User Player Favorite
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="liked"><span data-translate="baloncestoseedApp.userPlayerFavorite.liked">Liked</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timestamp"><span data-translate="baloncestoseedApp.userPlayerFavorite.timestamp">Timestamp</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span data-translate="baloncestoseedApp.userPlayerFavorite.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="player.name"><span data-translate="baloncestoseedApp.userPlayerFavorite.player">Player</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="userPlayerFavorite in vm.userPlayerFavorites track by userPlayerFavorite.id">
+                    <td><a ui-sref="user-player-favorite-detail({id:userPlayerFavorite.id})">{{userPlayerFavorite.id}}</a></td>
+                    <td>{{userPlayerFavorite.liked}}</td>
+                    <td>{{userPlayerFavorite.timestamp | date:'medium'}}</td>
+                    <td>
+                        {{userPlayerFavorite.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="player-detail({id:userPlayerFavorite.player.id})">{{userPlayerFavorite.player.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="user-player-favorite-detail({id:userPlayerFavorite.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-player-favorite.edit({id:userPlayerFavorite.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-player-favorite.delete({id:userPlayerFavorite.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

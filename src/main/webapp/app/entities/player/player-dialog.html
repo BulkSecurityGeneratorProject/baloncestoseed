@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPlayerLabel" data-translate="baloncestoseedApp.player.home.createOrEditLabel">Create or edit a Player</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.player.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.player.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.player.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.surname" for="field_surname">Surname</label>
+            <input type="text" class="form-control" name="surname" id="field_surname"
+                    ng-model="vm.player.surname"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.birthdate" for="field_birthdate">Birthdate</label>
+                <div class="input-group">
+                    <input id="field_birthdate" type="text" class="form-control" name="birthdate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.player.birthdate" is-open="vm.datePickerOpenStatus.birthdate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('birthdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.nbaskets" for="field_nbaskets">Nbaskets</label>
+            <input type="number" class="form-control" name="nbaskets" id="field_nbaskets"
+                    ng-model="vm.player.nbaskets"
+                    required />
+            <div ng-show="editForm.nbaskets.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nbaskets.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nbaskets.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.nassists" for="field_nassists">Nassists</label>
+            <input type="number" class="form-control" name="nassists" id="field_nassists"
+                    ng-model="vm.player.nassists"
+                    required />
+            <div ng-show="editForm.nassists.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nassists.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nassists.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.nrebots" for="field_nrebots">Nrebots</label>
+            <input type="number" class="form-control" name="nrebots" id="field_nrebots"
+                    ng-model="vm.player.nrebots"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="baloncestoseedApp.player.pos" for="field_pos">Pos</label>
+            <select class="form-control" name="pos" ng-model="vm.player.pos" id="field_pos">
+                <option value="ALERO" data-translate="baloncestoseedApp.Position.ALERO">ALERO</option>
+                <option value="BASE" data-translate="baloncestoseedApp.Position.BASE">BASE</option>
+                <option value="PIVOT" data-translate="baloncestoseedApp.Position.PIVOT">PIVOT</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="baloncestoseedApp.player.city" for="field_city">City</label>
+            <select class="form-control" id="field_city" name="city" ng-model="vm.player.city" ng-options="city as city.name for city in vm.cities | orderBy:'id' track by city.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="baloncestoseedApp.player.team" for="field_team">Team</label>
+            <select class="form-control" id="field_team" name="team" ng-model="vm.player.team" ng-options="team as team.name for team in vm.teams track by team.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

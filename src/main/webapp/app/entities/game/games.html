@@ -1,0 +1,76 @@
+<div>
+    <h2 data-translate="baloncestoseedApp.game.home.title">Games</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="game.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="baloncestoseedApp.game.home.createLabel">
+                        Create new Game
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="baloncestoseedApp.game.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timeStart"><span data-translate="baloncestoseedApp.game.timeStart">Time Start</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timeFinish"><span data-translate="baloncestoseedApp.game.timeFinish">Time Finish</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scoreLocal"><span data-translate="baloncestoseedApp.game.scoreLocal">Score Local</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scoreVisitor"><span data-translate="baloncestoseedApp.game.scoreVisitor">Score Visitor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gameLocalTeam.name"><span data-translate="baloncestoseedApp.game.gameLocalTeam">Game Local Team</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gameVisitorTeam.name"><span data-translate="baloncestoseedApp.game.gameVisitorTeam">Game Visitor Team</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in vm.games track by game.id">
+                    <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
+                    <td>{{game.name}}</td>
+                    <td>{{game.timeStart | date:'medium'}}</td>
+                    <td>{{game.timeFinish | date:'medium'}}</td>
+                    <td>{{game.scoreLocal}}</td>
+                    <td>{{game.scoreVisitor}}</td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.gameLocalTeam.id})">{{game.gameLocalTeam.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.gameVisitorTeam.id})">{{game.gameVisitorTeam.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="game-detail({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.edit({id:game.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.delete({id:game.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

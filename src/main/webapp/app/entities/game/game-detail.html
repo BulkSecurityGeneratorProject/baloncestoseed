@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="baloncestoseedApp.game.detail.title">Game</span> {{vm.game.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="baloncestoseedApp.game.name">Name</span></dt>
+        <dd>
+            <span>{{vm.game.name}}</span>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.timeStart">Time Start</span></dt>
+        <dd>
+            <span>{{vm.game.timeStart | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.timeFinish">Time Finish</span></dt>
+        <dd>
+            <span>{{vm.game.timeFinish | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.scoreLocal">Score Local</span></dt>
+        <dd>
+            <span>{{vm.game.scoreLocal}}</span>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.scoreVisitor">Score Visitor</span></dt>
+        <dd>
+            <span>{{vm.game.scoreVisitor}}</span>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.gameLocalTeam">Game Local Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.gameLocalTeam.id})">{{vm.game.gameLocalTeam.name}}</a>
+        </dd>
+        <dt><span data-translate="baloncestoseedApp.game.gameVisitorTeam">Game Visitor Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.gameVisitorTeam.id})">{{vm.game.gameVisitorTeam.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="game-detail.edit({id:vm.game.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

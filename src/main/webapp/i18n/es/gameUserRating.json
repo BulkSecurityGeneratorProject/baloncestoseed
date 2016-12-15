@@ -1,0 +1,25 @@
+{
+    "baloncestoseedApp": {
+        "gameUserRating" : {
+            "home": {
+                "title": "Game User Ratings",
+                "createLabel": "Crear nuevo Game User Rating",
+                "createOrEditLabel": "Crear o editar Game User Rating",
+                "search": "Search for Game User Rating"
+            },
+            "created": "Un nuevo Game User Rating ha sido creado con el identificador {{ param }}",
+            "updated": "Un Game User Rating ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Game User Rating ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Game User Rating {{ id }}?"
+            },
+            "detail": {
+                "title": "Game User Rating"
+            },
+            "rating": "Rating",
+            "timestamp": "Timestamp",
+            "game": "Game",
+            "user": "User"
+        }
+    }
+}

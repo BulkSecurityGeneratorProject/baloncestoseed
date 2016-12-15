@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "city",
+            "otherEntityName": "city",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "team"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "players",
+            "otherEntityName": "player",
+            "otherEntityRelationshipName": "team"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "gameLocalTeam",
+            "otherEntityName": "game",
+            "otherEntityRelationshipName": "gameLocalTeam"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "gameVisitorTeam",
+            "otherEntityName": "game",
+            "otherEntityRelationshipName": "gameVisitorTeam"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fundationDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161215155213",
+    "entityTableName": "team",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass"
+}

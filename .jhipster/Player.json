@@ -1,0 +1,70 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "city",
+            "otherEntityName": "city",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "player"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "userPlayerFavorite",
+            "otherEntityName": "userPlayerFavorite",
+            "otherEntityRelationshipName": "player"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "surname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthdate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nbaskets",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nassists",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nrebots",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "pos",
+            "fieldType": "Position",
+            "fieldValues": "ALERO,BASE,PIVOT"
+        }
+    ],
+    "changelogDate": "20161215155212",
+    "entityTableName": "player",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass"
+}

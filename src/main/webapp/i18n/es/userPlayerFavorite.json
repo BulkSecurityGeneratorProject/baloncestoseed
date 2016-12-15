@@ -1,0 +1,25 @@
+{
+    "baloncestoseedApp": {
+        "userPlayerFavorite" : {
+            "home": {
+                "title": "User Player Favorites",
+                "createLabel": "Crear nuevo User Player Favorite",
+                "createOrEditLabel": "Crear o editar User Player Favorite",
+                "search": "Search for User Player Favorite"
+            },
+            "created": "Un nuevo User Player Favorite ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Player Favorite ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Player Favorite ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Player Favorite {{ id }}?"
+            },
+            "detail": {
+                "title": "User Player Favorite"
+            },
+            "liked": "Liked",
+            "timestamp": "Timestamp",
+            "user": "User",
+            "player": "Player"
+        }
+    }
+}

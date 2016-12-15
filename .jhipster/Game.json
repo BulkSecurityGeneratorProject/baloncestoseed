@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "gameLocalTeam",
+            "otherEntityName": "team",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "gameVisitorTeam",
+            "otherEntityName": "team",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "gameUserRating",
+            "otherEntityName": "gameUserRating",
+            "otherEntityRelationshipName": "game"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "timeStart",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "timeFinish",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "scoreLocal",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "scoreVisitor",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161215155216",
+    "entityTableName": "game",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass"
+}

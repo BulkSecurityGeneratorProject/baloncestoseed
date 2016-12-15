@@ -1,0 +1,91 @@
+//Entities
+entity Player{
+
+	name String required,
+	surname String,
+	birthdate LocalDate,
+	nbaskets Integer required,
+	nassists Integer required,
+	nrebots Integer, 
+	pos Position
+
+}
+
+enum Position {
+
+    ALERO, BASE, PIVOT
+}
+
+entity Team {
+
+	name String required,
+	fundationDate LocalDate
+
+}
+
+entity City{
+
+	name String required,
+    cp String required
+}
+
+entity UserPlayerFavorite{
+
+	liked Boolean,
+	timestamp ZonedDateTime
+    
+}
+
+entity Game{
+
+	name String required,
+	timeStart ZonedDateTime,
+    timeFinish ZonedDateTime,
+	scoreLocal Integer required,
+    scoreVisitor Integer required
+    
+}
+
+entity GameUserRating{
+
+	rating Integer required,
+    timestamp ZonedDateTime
+}
+
+//Relationships
+relationship ManyToOne {
+
+	Player{team(name)} to Team{players}
+}
+
+relationship OneToOne{
+	Player{city(name)} to City{player},
+    Team{city(name)} to City{team}
+}
+
+relationship ManyToOne{
+	
+    Game{gameLocalTeam(name)} to Team{gameLocalTeam},
+    Game{gameVisitorTeam(name)} to Team{gameVisitorTeam}
+    
+}
+
+relationship ManyToOne{
+
+	UserPlayerFavorite{user(login)} to User,
+    UserPlayerFavorite{player(name)} to Player{userPlayerFavorite}
+
+}
+
+relationship ManyToOne{
+
+	GameUserRating{game(name)} to Game{gameUserRating},
+    GameUserRating{user(login)} to User
+}
+
+//Services
+service all with serviceClass
+
+//Pagination options
+paginate all with pagination
+
